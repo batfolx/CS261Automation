@@ -8,4 +8,6 @@ where "~/CS261/Project0/" is the directory to your source code and "veleacv" is 
 
 You may have to have this path on the JMU Student server: /cs/home/stu/<eID>/cs261/ for this to place the project properly.
 
-Let me know of any bugs
+Let me know of any bugs.
+
+I may add functionality for you to input a third parameter which will be to whatever folder you need for this zip file to be moved in.

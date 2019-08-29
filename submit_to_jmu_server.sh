@@ -1,8 +1,6 @@
 #!/bin/bash
 
-
 $directory = $1
-CSProject = project0.zip
 eID = $2
 echo Attempting to see if directory exists...
 
@@ -34,6 +32,7 @@ if [ -d $1 ]; then
 
 	fi
 fi
+
 
 
 
