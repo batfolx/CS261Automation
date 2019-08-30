@@ -6,9 +6,19 @@ if [ -z "$3" ]; then
 	
 	directory="/cs/home/stu/${eID}/cs261/" 
 else
-	directory=$3
+	if [ ${3:(-1)} != "/" ]; then
+		echo did not have a backslack
+		directory=$3
+		directory+="/"
+
+	else
+		echo did have a backslash
+		directory=$3
+	fi
 fi
 
+
+echo this is last character of directory ${directory:(-1)}
 echo this is directory $directory
 
 
