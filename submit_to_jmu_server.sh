@@ -7,19 +7,15 @@ if [ -z "$3" ]; then
 	directory="/cs/home/stu/${eID}/cs261/" 
 else
 	if [ ${3:(-1)} != "/" ]; then
-		echo did not have a backslack
 		directory=$3
 		directory+="/"
 
 	else
-		echo did have a backslash
 		directory=$3
 	fi
 fi
 
 
-echo this is last character of directory ${directory:(-1)}
-echo this is directory $directory
 
 
 if [ -d $1 ]; then
@@ -39,11 +35,11 @@ if [ -d $1 ]; then
 			if [ "$?" -eq "0" ]; then
 				echo Unzipped zip file into specified directory, $directory. 
 			else
-				echo Something went wrong. Check your directory. Do you have a \"\\\" at the end of your parameter?
+				echo Something went wrong. Check your directory, you entered < $directory >.
 				exit 1
 			fi
 		else
-			echo SCP failed. Check directory.
+			echo SCP failed. Check your directory path. 
 			exit 1
 		fi
 
