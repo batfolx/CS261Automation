@@ -25,11 +25,17 @@ if [ -d $1 ]; then
 		scp ~/zip_files/project0.zip  $eID@stu.cs.jmu.edu:$directory 
 		if [ "$?" -eq "0" ]; then
 			echo Zip file uploaded to JMU CS Server.
+			ssh $eID@stu.cs.jmu.edu "ls; unzip -o ${directory}project0.zip -d ${directory}; rm -rf ${directory}project0.zip"
+			if [ "$?" -eq "0" ]; then
+				echo Unzipped zip file into specified directory, $directory. 
+			else
+				echo Something went wrong. Check your directory. Do you have a \"\\\" at the end of your parameter?
+				exit 1
+			fi
 		else
 			echo SCP failed. Check directory.
+			exit 1
 		fi
-
-		ssh $eID@stu.cs.jmu.edu "ls; unzip -o ${directory}project0.zip -d ${directory}; rm -rf ${directory}project0.zip"
 
 		
 
