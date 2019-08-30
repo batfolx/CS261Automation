@@ -13,7 +13,7 @@ If you do not want to make a directory that is /cs/home/stu/*eID*/cs261/, then y
 Example:
 
 
-./submit_to_jmu_server ~/CS261.Project0/ veleacv /cs/home/stu/veleacv/CodingProjects
+./submit_to_jmu_server ~/CS261/Project0/ veleacv /cs/home/stu/veleacv/CodingProjects
 
 
 
