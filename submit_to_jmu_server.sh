@@ -18,14 +18,14 @@ if [ -d $1 ]; then
 		echo Destination address valid. Zipping project.
 		cp -rf $1 ~/zip_files//Project0
 		echo Folder copied. Zipping project.
-		cd ~/zip_files/ &&  zip -r project0.zip Project0/
+		cd ~/zip_files/ &&  zip -r -q project0.zip Project0/
 	        echo Project zipped. Attempting to SSH into JMU Server.	
 		mv project0.zip ~/zip_files/
 	
 		scp ~/zip_files/project0.zip  $eID@stu.cs.jmu.edu:$directory 
 		if [ "$?" -eq "0" ]; then
 			echo Zip file uploaded to JMU CS Server.
-			ssh $eID@stu.cs.jmu.edu "ls; unzip -o ${directory}project0.zip -d ${directory}; rm -rf ${directory}project0.zip"
+			ssh $eID@stu.cs.jmu.edu "unzip -q -o ${directory}project0.zip -d ${directory}; rm -rf ${directory}project0.zip"
 			if [ "$?" -eq "0" ]; then
 				echo Unzipped zip file into specified directory, $directory. 
 			else
