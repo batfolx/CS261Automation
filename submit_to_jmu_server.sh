@@ -1,8 +1,16 @@
 #!/bin/bash
 
-$directory = $1
-eID = $2
+eID=$2
 echo Attempting to see if directory exists...
+if [ -z "$3" ]; then
+	
+	directory="/cs/home/stu/${eID}/cs261/" 
+else
+	directory=$3
+fi
+
+echo this is directory $directory
+
 
 if [ -d $1 ]; then
 	echo Directry valid. Attempting to zip project.
@@ -13,16 +21,15 @@ if [ -d $1 ]; then
 		cd ~/zip_files/ &&  zip -r project0.zip Project0/
 	        echo Project zipped. Attempting to SSH into JMU Server.	
 		mv project0.zip ~/zip_files/
-		
-
-		scp ~/zip_files/project0.zip  $2@stu.cs.jmu.edu:/cs/home/stu/${2}/cs261/ 
+	
+		scp ~/zip_files/project0.zip  $eID@stu.cs.jmu.edu:$directory 
 		if [ "$?" -eq "0" ]; then
 			echo Zip file uploaded to JMU CS Server.
 		else
 			echo SCP failed. Check directory.
 		fi
 
-		ssh $2@stu.cs.jmu.edu "ls; unzip -o  /cs/home/stu/${2}/cs261/project0.zip -d /cs/home/stu/${2}/cs261/; rm -rf /cs/home/stu/${2}/cs261/project0.zip Project0/"
+		ssh $eID@stu.cs.jmu.edu "ls; unzip -o ${directory}project0.zip -d ${directory}; rm -rf ${directory}project0.zip"
 
 		
 

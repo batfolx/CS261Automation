@@ -6,8 +6,18 @@ Example:
 
 where "~/CS261/Project0/" is the directory to your source code and "veleacv" is your eID.
 
-You may have to have this path on the JMU Student server: /cs/home/stu/<eID>/cs261/ for this to place the project properly.
+You may have to have this path on the JMU Student server: /cs/home/stu/*eID*/cs261/ for this to place the project properly.
+
+If you do not want to make a directory that is /cs/home/stu/*eID*/cs261/, then you may specify a third parameter to dictate where your code will go.
+
+Example:
+
+
+./submit_to_jmu_server ~/CS261.Project0/ veleacv /cs/home/stu/veleacv/CodingProjects
+
+
+
 
 Let me know of any bugs.
 
-I may add functionality for you to input a third parameter which will be to whatever folder you need for this zip file to be moved in.
+
