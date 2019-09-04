@@ -19,7 +19,7 @@ fi
 
 
 if [ -d $1 ]; then
-	echo Directry valid. Attempting to zip project.
+	echo Directory valid. Attempting to zip project.
 	if [ -d ~/zip_files/ ]; then
 
 		if [ -d ~/zip_files/Project0/ ]; then
@@ -55,5 +55,8 @@ if [ -d $1 ]; then
 		echo ~/zip_files/ does not exist. Create a directory with this command: mkdir ~/zip_files
 
 	fi
+
+else
+	echo The directory $1 is not valid.
 fi
 
