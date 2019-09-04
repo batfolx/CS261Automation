@@ -36,7 +36,7 @@ if [ -d $1 ]; then
 		scp ~/zip_files/project0.zip  $eID@stu.cs.jmu.edu:$directory 
 		if [ "$?" -eq "0" ]; then
 			echo Zip file uploaded to JMU CS Server.
-			ssh $eID@stu.cs.jmu.edu "unzip -q -o ${directory}project0.zip -d ${directory}; rm -rf ${directory}project0.zip"
+			ssh $eID@stu.cs.jmu.edu "unzip -q -o ${directory}project0.zip -d ${directory}; rm -rf ${directory}project0.zip; cd ${directory}/Project0; make clean; make"
 			if [ "$?" -eq "0" ]; then
 				echo Unzipped zip file into specified directory, $directory. 
 			else
