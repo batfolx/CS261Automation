@@ -21,6 +21,11 @@ fi
 if [ -d $1 ]; then
 	echo Directry valid. Attempting to zip project.
 	if [ -d ~/zip_files/ ]; then
+
+		if [ -d ~/zip_files/Project0/ ]; then
+			rm -rf ~/zip_files/Project0/
+		fi
+
 		echo Destination address valid. Zipping project.
 		cp -rf $1 ~/zip_files//Project0
 		echo Folder copied. Zipping project.
