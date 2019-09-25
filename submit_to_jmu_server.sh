@@ -22,21 +22,21 @@ if [ -d $1 ]; then
 	echo Directory valid. Attempting to zip project.
 	if [ -d ~/zip_files/ ]; then
 
-		if [ -d ~/zip_files/Project0/ ]; then
-			rm -rf ~/zip_files/Project0/
+		if [ -d ~/zip_files/Project1/ ]; then
+			rm -rf ~/zip_files/Project1/
 		fi
 
 		echo Destination address valid. Zipping project.
-		cp -rf $1 ~/zip_files//Project0
+		cp -rf $1 ~/zip_files//Project1
 		echo Folder copied. Zipping project.
-		cd ~/zip_files/ &&  zip -r -q project0.zip Project0/
+		cd ~/zip_files/ &&  zip -r -q project1.zip Project1/
 	        echo Project zipped. Attempting to SSH into JMU Server.	
-		mv project0.zip ~/zip_files/
+		mv project1.zip ~/zip_files/
 	
-		scp ~/zip_files/project0.zip  $eID@stu.cs.jmu.edu:$directory 
+		scp ~/zip_files/project1.zip  $eID@stu.cs.jmu.edu:$directory 
 		if [ "$?" -eq "0" ]; then
 			echo Zip file uploaded to JMU CS Server.
-			ssh $eID@stu.cs.jmu.edu "unzip -q -o ${directory}project0.zip -d ${directory}; rm -rf ${directory}project0.zip; cd ${directory}/Project0; make clean; make"
+			ssh $eID@stu.cs.jmu.edu "unzip -q -o ${directory}project1.zip -d ${directory}; rm -rf ${directory}project1.zip; cd ${directory}/Project1; make clean; make"
 			if [ "$?" -eq "0" ]; then
 				echo Unzipped zip file into specified directory, $directory. 
 			else
