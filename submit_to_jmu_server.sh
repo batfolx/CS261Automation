@@ -1,17 +1,18 @@
 #!/bin/bash
 
 eID=$2
+project_number=$3
 echo Attempting to see if directory exists...
-if [ -z "$3" ]; then
+if [ -z "$4" ]; then
 	
 	directory="/cs/home/stu/${eID}/cs261/" 
 else
-	if [ ${3:(-1)} != "/" ]; then
-		directory=$3
+	if [ ${4:(-1)} != "/" ]; then
+		directory=$4
 		directory+="/"
 
 	else
-		directory=$3
+		directory=$4
 	fi
 fi
 
@@ -22,21 +23,21 @@ if [ -d $1 ]; then
 	echo Directory valid. Attempting to zip project.
 	if [ -d ~/zip_files/ ]; then
 
-		if [ -d ~/zip_files/Project1/ ]; then
-			rm -rf ~/zip_files/Project1/
+		if [ -d ~/zip_files/Project$project_number/ ]; then
+			rm -rf ~/zip_files/Project$project_number/
 		fi
 
 		echo Destination address valid. Zipping project.
-		cp -rf $1 ~/zip_files//Project1
+		cp -rf $1 ~/zip_files//Project$project_number
 		echo Folder copied. Zipping project.
-		cd ~/zip_files/ &&  zip -r -q project1.zip Project1/
+		cd ~/zip_files/ &&  zip -r -q project$project_number.zip Project$project_number/
 	        echo Project zipped. Attempting to SSH into JMU Server.	
-		mv project1.zip ~/zip_files/
+		mv project$project_number.zip ~/zip_files/
 	
 		scp ~/zip_files/project1.zip  $eID@stu.cs.jmu.edu:$directory 
 		if [ "$?" -eq "0" ]; then
 			echo Zip file uploaded to JMU CS Server.
-			ssh $eID@stu.cs.jmu.edu "unzip -q -o ${directory}project1.zip -d ${directory}; rm -rf ${directory}project1.zip; cd ${directory}/Project1; make clean; make"
+			ssh $eID@stu.cs.jmu.edu "unzip -q -o ${directory}project${project_number}.zip -d ${directory}; rm -rf ${directory}project${project_number}.zip; cd ${directory}/Project${project_number}; make clean; make"
 			if [ "$?" -eq "0" ]; then
 				echo Unzipped zip file into specified directory, $directory. 
 			else
