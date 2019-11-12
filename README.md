@@ -8,10 +8,10 @@ The fourth parameter is an optional parameter that will default to ~/**eID**/cs2
 
 Example:
 
-If you wanted to get your local code (located in directory ~/CS261/p4/) onto stu for p4 into the directory ~/**eID**/CS261Projects/, this is what it would look like:
+If you wanted to get your local code (located in directory ~/CS261/p4/), using the eID notaneID onto stu for p4 into the directory ~/**eID**/CS261Projects/, this is what it would look like:
 
   ```
-  ./submit_to_jmu_server ~/CS261/p4/ veleacv 4 ~/**eID**/CS261Projects/ 
+  ./submit_to_jmu_server ~/CS261/p4/ notaneID 4 ~/**eID**/CS261Projects/ 
   ```
 
 
